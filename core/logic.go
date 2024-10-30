@@ -23,7 +23,7 @@ type LogicRes struct {
 	Total     float64 //建议定投金额
 }
 
-const minRate = 80.0   //最小定投原始比例
+const minRate = 60.0   //最小定投原始比例
 const maxRate = 140.0  //最大定投原始比例
 const fundCaLine = 5.0 //(持仓成本-基金净值)/持仓成本 5%浮动
 

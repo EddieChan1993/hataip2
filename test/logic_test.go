@@ -2,7 +2,7 @@ package test
 
 import (
 	"fmt"
-	"hataip/core"
+	"hataip2/core"
 	"testing"
 )
 
