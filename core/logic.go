@@ -42,10 +42,10 @@ func LogicCal(params *LogicInput) *LogicRes {
 		rateSure := 0.0
 		if rateCa >= 0 {
 			//持仓成本>=基金净值
-			rateSure = math.Pow(math.Abs(rateCa)/fundCaLine, 2)
+			rateSure = math.Pow(rateCa/fundCaLine, 2)
 			totalRate = 100 + rateSure*(maxRate-100)
 		} else {
-			rateSure = math.Pow(math.Abs(fundCaLine+rateCa)/fundCaLine, 2)
+			rateSure = math.Pow(math.Abs(fundCaLine+rateCa)/fundCaLine, 3)
 			totalRate = minRate + rateSure*(100-minRate)
 		}
 		res.Rate = rateCa
