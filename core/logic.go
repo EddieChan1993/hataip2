@@ -1,7 +1,6 @@
 package core
 
 import (
-	"fmt"
 	"math"
 	"strconv"
 )
@@ -23,7 +22,7 @@ type LogicRes struct {
 	Total     float64 //建议定投金额
 }
 
-const minRate = 60.0   //最小定投原始比例
+const minRate = 50.0   //最小定投原始比例
 const maxRate = 140.0  //最大定投原始比例
 const fundCaLine = 5.0 //(持仓成本-基金净值)/持仓成本 5%浮动
 
@@ -55,15 +54,6 @@ func LogicCal(params *LogicInput) *LogicRes {
 		//持仓成本>=基金净值 增幅超过fundCaLine%
 		res.TotalRate = maxRate
 		res.Total = maxRate / 100 * params.OriInvestAmount
-	}
-	return res
-}
-
-func Str2Float64(str string) float64 {
-	res, err := strconv.ParseFloat(str, 64)
-	if err != nil {
-		fmt.Println(err)
-		return 0
 	}
 	return res
 }
