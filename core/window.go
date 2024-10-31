@@ -7,7 +7,7 @@ import (
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/widget"
-	"github.com/spf13/cast"
+	"github.com/EddieChan1993/gcore/utils/cast"
 )
 
 func Window() {
