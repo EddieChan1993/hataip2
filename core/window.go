@@ -30,7 +30,7 @@ func Window() {
 			FundValue:       cast.ToFloat64(input1.Text),
 			OriInvestAmount: cast.ToFloat64(input2.Text),
 		})
-		str1 := fmt.Sprintf("Rate(-%.0f%% ～ +%.0f%%)：%s%%\n", fundCaLine, fundCaLine, Float642str(res.Rate, 4))
+		str1 := fmt.Sprintf("Rate(-%.0f%% ～ +%.0f%%)：%s%%\n", FundCaLine, FundCaLine, Float642str(res.Rate, 4))
 		str3 := fmt.Sprintf("AmountRate %.4f%% ~ %.4f%%：%s%%\n", minRate, maxRate, Float642str(res.TotalRate, 0))
 		str4 := fmt.Sprintf("Amount：%s \n", Float642str(res.Total, 0))
 		label.SetText(str1 + str3 + str4)

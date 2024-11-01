@@ -13,7 +13,7 @@ func TestCal(t *testing.T) {
 		OriInvestAmount: 50,
 	}
 	base := p.FundValue
-	for i := base - base*5.0/100; i < base+base*5.0/100; i += 0.001 {
+	for i := base - base*core.FundCaLine/100; i < base+base*core.FundCaLine/100; i += 0.001 {
 		p.FundValue = i
 		res := core.LogicCal(p)
 		fmt.Println(fmt.Sprintf("%.4f %.4f %.4f %.4f ", p.FundValue, res.Rate, res.TotalRate, res.Total))

@@ -22,9 +22,9 @@ type LogicRes struct {
 	Total     float64 //建议定投金额
 }
 
-const minRate = 50.0   //最小定投原始比例
-const maxRate = 140.0  //最大定投原始比例
-const fundCaLine = 5.0 //(持仓成本-基金净值)/持仓成本 5%浮动
+const minRate = 50.0    //最小定投原始比例
+const maxRate = 140.0   //最大定投原始比例
+const FundCaLine = 25.0 //(持仓成本-基金净值)/持仓成本 5%浮动
 
 func LogicCal(params *LogicInput) *LogicRes {
 	res := &LogicRes{
@@ -32,19 +32,19 @@ func LogicCal(params *LogicInput) *LogicRes {
 	}
 	rateCa := (params.HoldingCost - params.FundValue) / params.FundValue * 100
 	res.Rate = rateCa
-	if rateCa <= -fundCaLine {
+	if rateCa <= -FundCaLine {
 		//持仓成本<=基金净值 增幅小于fundCaLine%
 		res.Total = minRate / 100 * params.OriInvestAmount
 		res.TotalRate = minRate
-	} else if rateCa > -fundCaLine && rateCa < fundCaLine {
+	} else if rateCa > -FundCaLine && rateCa < FundCaLine {
 		totalRate := 0.0
 		rateSure := 0.0
 		if rateCa >= 0 {
 			//持仓成本>=基金净值
-			rateSure = math.Pow(rateCa/fundCaLine, 2)
+			rateSure = math.Pow(rateCa/FundCaLine, 2)
 			totalRate = 100 + rateSure*(maxRate-100)
 		} else {
-			rateSure = math.Pow(math.Abs(fundCaLine+rateCa)/fundCaLine, 3)
+			rateSure = math.Pow(math.Abs(FundCaLine+rateCa)/FundCaLine, 3)
 			totalRate = minRate + rateSure*(100-minRate)
 		}
 		res.Rate = rateCa
